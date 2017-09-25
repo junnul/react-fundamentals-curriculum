@@ -1,0 +1,28 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: #fff;
+}
+
+nav {
+    &.navbar {
+        background-color: rgba(252, 90, 44, .89);
+    }
+}
+
+input {
+    &[type="text"] {
+        width: auto;
+    }
+}
+
+.container-fluid {
+    background-image: url(images/pattern.svg);
+    background-size: cover;
+}
