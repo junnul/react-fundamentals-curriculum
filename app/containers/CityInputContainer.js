@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-
-var SaveButton = props => <button
-        type="button"
-        className="btn btn-success mt-2"
-    >
-        Get Weather
-    </button>;
-
-var CityInput = props => {
-    return <input
-            type="text"
-            className="form-control mr-auto ml-auto mt-2"
-            placeholder="St. George, Utah"
-        />;
-};
+import { SaveButton, CityInput } from '../components/Form';
 
 export default class CityInputContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            city: ''
+        };
+
+        this.cityChange = this.cityChange.bind(this);
+    }
+
+    cityChange(event) {
+        this.setState({city: event.target.value});
+    }
+
     render() {
         return <div>
-            <CityInput />
+            <CityInput value={this.state.city} onChange={this.cityChange} />
             <SaveButton />
         </div>
     }
