@@ -1,14 +1,19 @@
 import React from 'react'
 import  { expect } from 'chai';
 import { shallow, mount, render } from 'enzyme'
+import sinon from 'sinon';
 
 import { SaveButton, CityInput } from '../../app/components/Form';
 
 describe('Form', () => {
 
     it('renders Button', () => {
-        const wrapper = shallow(<SaveButton />);
+        const buttonClick = sinon.spy();
+        const wrapper = shallow(<SaveButton onClick={buttonClick} />);
         expect(wrapper.find('button')).to.have.length(1);
+
+        wrapper.find('button').simulate('click');
+        expect(buttonClick).to.have.property('callCount', 1);
     });
 
     it('renders input', () => {
