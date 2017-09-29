@@ -9,10 +9,7 @@ class Forecast extends Component {
         <div className="d-flex flex-column align-items-center mb-auto">
             <h1 className="mt-5 mb-5">{this.props.city}</h1>
             <div className="d-flex">
-                {this.props.forecast.map(day => <div key={day.dt} className="day d-flex flex-column p-3">
-                    <DayItem weather={day.weather[0]} />
-                    {getDate(day.dt)}
-                </div>)}
+                {this.props.forecast.map(day => <DayItem key={day.dt} day={day} />)}
             </div>
         </div>
         )
