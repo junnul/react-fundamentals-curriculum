@@ -26,3 +26,13 @@ input {
     background-image: url(images/pattern.svg);
     background-size: cover;
 }
+
+.day {
+    svg {
+        height: 80px;
+        width: auto;
+        path {
+            fill: #fff !important;
+        }
+    }
+}
