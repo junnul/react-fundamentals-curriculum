@@ -11,6 +11,7 @@ class ForecastContainer extends Component {
             forecast: { list: [] },
             loading: false,
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -32,10 +33,17 @@ class ForecastContainer extends Component {
             });
     }
 
+    handleClick(day) {
+        this.props.history.push('/forecast/' + this.state.city + '/detail', {day});
+    }
+
     render() {
         return this.state.loading
             ? <div>Loading</div>
-            : <Forecast city={this.state.city } forecast={this.state.forecast.list} />
+            : <Forecast
+                city={this.state.city }
+                forecast={this.state.forecast.list}
+                onClick={this.handleClick} />
     }
 }
 
@@ -47,6 +55,9 @@ ForecastContainer.propTypes = {
             })
         })
     })
+};
+ForecastContainer.contextTypes = {
+    router: PropTypes.object.isRequired
 };
 
 export default ForecastContainer;

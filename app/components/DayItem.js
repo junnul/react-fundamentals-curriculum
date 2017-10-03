@@ -5,7 +5,7 @@ import Isvg from 'react-inlinesvg';
 
 class DayItem extends Component {
     render() {
-        return <div className="day d-flex flex-column p-4">
+        return <div className="day d-flex flex-column p-4"  onClick={() => this.props.onClick(this.props.day)}>
             <Isvg src={`/app/images/weather-icons/${this.props.day.weather[0].icon}.svg`}>
                 <img src={`/app/images/weather-icons/${this.props.day.weather[0].icon}.svg`} />
             </Isvg>
