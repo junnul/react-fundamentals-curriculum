@@ -20,6 +20,12 @@ class ForecastContainer extends Component {
         this.makeRequest(city);
     }
 
+    componentWillReceiveProps(nextProps) {
+        const city = nextProps.match.params.city;
+
+        this.makeRequest(city);
+    }
+
     makeRequest(city) {
         this.setState({loading: true});
 

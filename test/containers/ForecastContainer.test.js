@@ -30,6 +30,27 @@ describe('ForecastContainer', () => {
         });
     });
 
+    it('reacts when props change', () => {
+
+        api.getForecast.restore();
+        const stub = sinon.stub(api, 'getForecast').callsFake((city) => {
+            return Promise.resolve({city: {name: city}});
+        });
+
+        const props = {
+            match: {params: {city: 'baz'}, list: []}
+        }
+        const buttonClick = sinon.spy();
+        const wrapper = shallow(<ForecastContainer {...props} onClick={buttonClick} />);
+
+        expect(stub.calledOnce).to.be.true;
+        expect(wrapper.state().city).to.equal('');
+        wrapper.setProps({match: {params: {city: 'Lorem'}}});
+        promise.then(data => {
+            expect(wrapper.state('city')).to.equal('Lorem');
+        });
+    });
+
     it('handles click events', () => {
 
         let urlResult, dataResult;
