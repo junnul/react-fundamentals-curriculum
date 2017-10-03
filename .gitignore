@@ -1,6 +1,7 @@
 /node_modules
 /dist
 /coverage
+/app/config/ApiKey.json
 
 .DS_Store
 
